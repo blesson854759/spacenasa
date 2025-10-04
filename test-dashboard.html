@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Test - STAR Explorer</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      background: #0f172a;
+      color: white;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .test-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 15px;
+    }
+    h1 {
+      color: #3b82f6;
+      margin-bottom: 30px;
+    }
+    .test-section {
+      margin-bottom: 30px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+    }
+    .test-section h2 {
+      color: #60a5fa;
+      margin-bottom: 15px;
+    }
+    button {
+      background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      margin: 5px;
+      transition: transform 0.2s;
+    }
+    button:hover {
+      transform: scale(1.05);
+    }
+    .status {
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      font-weight: 600;
+    }
+    .success {
+      background: rgba(16, 185, 129, 0.2);
+      border-left: 4px solid #10b981;
+    }
+    .error {
+      background: rgba(239, 68, 68, 0.2);
+      border-left: 4px solid #ef4444;
+    }
+    .info {
+      background: rgba(59, 130, 246, 0.2);
+      border-left: 4px solid #3b82f6;
+    }
+    code {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 2px 6px;
+      border-radius: 3px;
+      color: #60a5fa;
+    }
+  </style>
+</head>
+<body>
+  <div class="test-container">
+    <h1>🌌 STAR Explorer - Dashboard Test</h1>
+    
+    <div class="test-section">
+      <h2>1. Authentication Status</h2>
+      <div id="auth-status"></div>
+      <button onclick="checkAuth()">Check Authentication</button>
+      <button onclick="autoLogin()">Auto Login (Demo User)</button>
+      <button onclick="clearAuth()">Clear Authentication</button>
+    </div>
+    
+    <div class="test-section">
+      <h2>2. Dashboard Access</h2>
+      <div id="dashboard-status"></div>
+      <button onclick="openDashboard()">Open Dashboard</button>
+      <button onclick="openLogin()">Open Login Page</button>
+    </div>
+    
+    <div class="test-section">
+      <h2>3. Quick Actions</h2>
+      <button onclick="loginAndOpen()">Login & Open Dashboard</button>
+      <button onclick="testModules()">Test Module Navigation</button>
+    </div>
+    
+    <div class="test-section">
+      <h2>4. System Information</h2>
+      <div id="system-info"></div>
+    </div>
+  </div>
+
+  <script>
+    function showStatus(elementId, message, type) {
+      const element = document.getElementById(elementId);
+      element.innerHTML = `<div class="status ${type}">${message}</div>`;
+    }
+
+    function checkAuth() {
+      const user = localStorage.getItem('starExplorerUser') || sessionStorage.getItem('starExplorerUser');
+      if (user) {
+        const userData = JSON.parse(user);
+        showStatus('auth-status', 
+          `✅ Authenticated as: <code>${userData.username}</code><br>` +
+          `Login Time: ${new Date(userData.loginTime).toLocaleString()}<br>` +
+          `Role: ${userData.role}`, 
+          'success'
+        );
+      } else {
+        showStatus('auth-status', '❌ Not authenticated. Please login first.', 'error');
+      }
+    }
+
+    function autoLogin() {
+      const userData = {
+        username: 'demo',
+        loginTime: new Date().toISOString(),
+        role: 'user'
+      };
+      localStorage.setItem('starExplorerUser', JSON.stringify(userData));
+      showStatus('auth-status', '✅ Auto-login successful! Logged in as <code>demo</code>', 'success');
+      setTimeout(checkAuth, 500);
+    }
+
+    function clearAuth() {
+      localStorage.removeItem('starExplorerUser');
+      sessionStorage.removeItem('starExplorerUser');
+      showStatus('auth-status', '🗑️ Authentication cleared.', 'info');
+    }
+
+    function openDashboard() {
+      const user = localStorage.getItem('starExplorerUser') || sessionStorage.getItem('starExplorerUser');
+      if (!user) {
+        showStatus('dashboard-status', '❌ Please login first before opening dashboard.', 'error');
+        return;
+      }
+      showStatus('dashboard-status', '🚀 Opening dashboard...', 'info');
+      setTimeout(() => {
+        window.location.href = 'dashboard.html';
+      }, 500);
+    }
+
+    function openLogin() {
+      window.location.href = 'login.html';
+    }
+
+    function loginAndOpen() {
+      autoLogin();
+      setTimeout(() => {
+        openDashboard();
+      }, 1000);
+    }
+
+    function testModules() {
+      const user = localStorage.getItem('starExplorerUser') || sessionStorage.getItem('starExplorerUser');
+      if (!user) {
+        showStatus('dashboard-status', '❌ Please login first.', 'error');
+        return;
+      }
+      
+      showStatus('dashboard-status', 
+        '📋 Module Test Instructions:<br>' +
+        '1. Click "Open Dashboard" button<br>' +
+        '2. Try clicking each sidebar menu item<br>' +
+        '3. Check browser console (F12) for debug messages<br>' +
+        '4. Verify each module displays correctly', 
+        'info'
+      );
+    }
+
+    // Show system info on load
+    window.addEventListener('load', () => {
+      const info = `
+        <div class="status info">
+          <strong>Browser:</strong> ${navigator.userAgent}<br>
+          <strong>Screen:</strong> ${window.screen.width}x${window.screen.height}<br>
+          <strong>Viewport:</strong> ${window.innerWidth}x${window.innerHeight}<br>
+          <strong>Local Storage:</strong> ${typeof(Storage) !== "undefined" ? '✅ Supported' : '❌ Not Supported'}
+        </div>
+      `;
+      document.getElementById('system-info').innerHTML = info;
+      checkAuth();
+    });
+  </script>
+</body>
+</html>
