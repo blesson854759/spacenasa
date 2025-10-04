@@ -1,0 +1,16 @@
+{
+  "Earth": {
+    "Amazon Rainforest": { "x": 0.45, "y": 0.55, "zoom": 3 },
+    "Himalayas": { "x": 0.6, "y": 0.3, "zoom": 4 },
+    "Sahara Desert": { "x": 0.4, "y": 0.45, "zoom": 3 }
+  },
+  "Moon": {
+    "Tycho Crater": { "x": 0.45, "y": 0.65, "zoom": 5 },
+    "Copernicus Crater": { "x": 0.5, "y": 0.4, "zoom": 4 }
+  },
+  "Mars": {
+    "Olympus Mons": { "x": 0.52, "y": 0.35, "zoom": 5 },
+    "Valles Marineris": { "x": 0.48, "y": 0.55, "zoom": 4 },
+    "Gale Crater": { "x": 0.55, "y": 0.6, "zoom": 5 }
+  }
+}
