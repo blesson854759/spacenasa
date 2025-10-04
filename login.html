@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STAR Explorer - Login</title>
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  <div class="stars"></div>
+  <div class="login-container">
+    <div class="login-box">
+      <div class="logo">
+        <h1>🌌 STAR Explorer</h1>
+        <p class="tagline">Space Telescope Analysis & Research Platform</p>
+      </div>
+      
+      <form id="loginForm" onsubmit="handleLogin(event)">
+        <div class="input-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" required placeholder="Enter your username">
+        </div>
+        
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required placeholder="Enter your password">
+        </div>
+        
+        <div class="remember-me">
+          <input type="checkbox" id="remember" name="remember">
+          <label for="remember">Remember me</label>
+        </div>
+        
+        <button type="submit" class="login-btn">Login</button>
+        
+        <div class="demo-credentials">
+          <p><strong>Demo Credentials:</strong></p>
+          <p>Username: <code>demo</code> | Password: <code>space2024</code></p>
+          <p>Username: <code>researcher</code> | Password: <code>nasa123</code></p>
+        </div>
+      </form>
+      
+      <div class="footer-links">
+        <a href="#" onclick="alert('Contact: support@starexplorer.space')">Forgot Password?</a>
+        <span>|</span>
+        <a href="#" onclick="alert('Registration coming soon!')">Sign Up</a>
+      </div>
+    </div>
+    
+    <div class="info-panel">
+      <h2>Welcome to STAR Explorer</h2>
+      <p>🚀 Explore NASA's massive image datasets</p>
+      <p>🔍 Zoom, label, and discover patterns</p>
+      <p>🌍 Earth observations, lunar maps, and space imagery</p>
+      <p>📊 Compare images across time and spectrum</p>
+      <p>🎓 Perfect for researchers and public exploration</p>
+    </div>
+  </div>
+  
+  <script src="login.js"></script>
+</body>
+</html>
