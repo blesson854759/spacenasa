@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STAR Explorer - Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Navigation Sidebar -->
+  <nav class="sidebar">
+    <div class="logo">
+      <h2>🌌 STAR</h2>
+      <p>Explorer</p>
+    </div>
+    
+    <ul class="nav-menu">
+      <li class="nav-item active" data-module="home">
+        <i class="fas fa-home"></i>
+        <span>Home</span>
+      </li>
+      <li class="nav-item" data-module="about-nasa">
+        <i class="fas fa-rocket"></i>
+        <span>About NASA</span>
+      </li>
+      <li class="nav-item" data-module="space-apps">
+        <i class="fas fa-globe"></i>
+        <span>Space Apps Challenge</span>
+      </li>
+      <li class="nav-item" data-module="image-explorer">
+        <i class="fas fa-search"></i>
+        <span>Image Explorer</span>
+      </li>
+      <li class="nav-item" data-module="comparison-tool">
+        <i class="fas fa-columns"></i>
+        <span>Data Comparison</span>
+      </li>
+      <li class="nav-item" data-module="gallery">
+        <i class="fas fa-images"></i>
+        <span>Public Gallery</span>
+      </li>
+    </ul>
+    
+    <div class="user-profile">
+      <div class="avatar">
+        <i class="fas fa-user"></i>
+      </div>
+      <div class="user-info">
+        <p id="username">User</p>
+        <button onclick="logout()" class="logout-btn">Logout</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content Area -->
+  <main class="main-content">
+    <header class="top-bar">
+      <h1 id="module-title">Dashboard</h1>
+      <div class="header-actions">
+        <button class="icon-btn" title="Notifications">
+          <i class="fas fa-bell"></i>
+          <span class="badge">3</span>
+        </button>
+        <button class="icon-btn" title="Settings">
+          <i class="fas fa-cog"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Module: Home -->
+    <section id="home" class="module active">
+      <div class="welcome-banner">
+        <h2>Welcome to STAR Explorer</h2>
+        <p>Your gateway to exploring NASA's massive image datasets</p>
+      </div>
+      
+      <div class="stats-grid">
+        <div class="stat-card">
+          <i class="fas fa-images"></i>
+          <h3>15,847</h3>
+          <p>Images Available</p>
+        </div>
+        <div class="stat-card">
+          <i class="fas fa-database"></i>
+          <h3>3.2 TB</h3>
+          <p>Total Data</p>
+        </div>
+        <div class="stat-card">
+          <i class="fas fa-tags"></i>
+          <h3>2,341</h3>
+          <p>Features Labeled</p>
+        </div>
+        <div class="stat-card">
+          <i class="fas fa-users"></i>
+          <h3>1,256</h3>
+          <p>Active Users</p>
+        </div>
+      </div>
+
+      <div class="quick-access">
+        <h3>Quick Access</h3>
+        <div class="quick-cards">
+          <div class="quick-card" onclick="switchModule('image-explorer')">
+            <i class="fas fa-search-plus"></i>
+            <h4>Start Exploring</h4>
+            <p>Browse massive image datasets</p>
+          </div>
+          <div class="quick-card" onclick="switchModule('comparison-tool')">
+            <i class="fas fa-exchange-alt"></i>
+            <h4>Compare Images</h4>
+            <p>Analyze temporal changes</p>
+          </div>
+          <div class="quick-card" onclick="switchModule('gallery')">
+            <i class="fas fa-eye"></i>
+            <h4>Public Gallery</h4>
+            <p>View featured discoveries</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="recent-activity">
+        <h3>Recent Activity</h3>
+        <div class="activity-list">
+          <div class="activity-item">
+            <i class="fas fa-tag"></i>
+            <div>
+              <p><strong>New feature labeled:</strong> Olympus Mons crater</p>
+              <span>2 hours ago</span>
+            </div>
+          </div>
+          <div class="activity-item">
+            <i class="fas fa-upload"></i>
+            <div>
+              <p><strong>Dataset updated:</strong> TESS Exoplanet Survey</p>
+              <span>5 hours ago</span>
+            </div>
+          </div>
+          <div class="activity-item">
+            <i class="fas fa-users"></i>
+            <div>
+              <p><strong>New collaboration:</strong> Lunar mapping project</p>
+              <span>1 day ago</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Module: About NASA -->
+    <section id="about-nasa" class="module">
+      <div class="content-wrapper">
+        <div class="hero-section">
+          <img src="C:\Users\bless\Downloads\NASA-Logo-removebg-preview.png" alt="NASA Logo" class="nasa-logo">
+          <h2>National Aeronautics and Space Administration</h2>
+        </div>
+
+        <div class="info-grid">
+          <div class="info-card">
+            <h3><i class="fas fa-history"></i> History</h3>
+            <p>NASA was established in 1958, succeeding the National Advisory Committee for Aeronautics (NACA). Since then, NASA has led American space exploration efforts, including the Apollo Moon landing missions, the Skylab space station, and the Space Shuttle program.</p>
+          </div>
+
+          <div class="info-card">
+            <h3><i class="fas fa-bullseye"></i> Mission</h3>
+            <p>NASA's mission is to drive advances in science, technology, aeronautics, and space exploration to enhance knowledge, education, innovation, economic vitality, and stewardship of Earth.</p>
+          </div>
+
+          <div class="info-card">
+            <h3><i class="fas fa-satellite"></i> Key Programs</h3>
+            <ul>
+              <li><strong>Artemis:</strong> Return humans to the Moon</li>
+              <li><strong>Mars Exploration:</strong> Rovers and future human missions</li>
+              <li><strong>ISS:</strong> International Space Station research</li>
+              <li><strong>James Webb:</strong> Next-generation space telescope</li>
+              <li><strong>Earth Science:</strong> Climate and environmental monitoring</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3><i class="fas fa-chart-line"></i> Achievements</h3>
+            <ul>
+              <li>First humans on the Moon (Apollo 11, 1969)</li>
+              <li>Mars rovers: Spirit, Opportunity, Curiosity, Perseverance</li>
+              <li>Hubble Space Telescope discoveries</li>
+              <li>International Space Station construction</li>
+              <li>Commercial crew program partnerships</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="data-sources">
+          <h3>NASA Open Data Sources</h3>
+          <div class="source-links">
+            <a href="https://data.nasa.gov/" target="_blank" class="source-btn">
+              <i class="fas fa-database"></i> NASA Open Data Portal
+            </a>
+            <a href="https://api.nasa.gov/" target="_blank" class="source-btn">
+              <i class="fas fa-code"></i> NASA APIs
+            </a>
+            <a href="https://earthdata.nasa.gov/" target="_blank" class="source-btn">
+              <i class="fas fa-globe-americas"></i> Earth Data
+            </a>
+            <a href="https://pds.nasa.gov/" target="_blank" class="source-btn">
+              <i class="fas fa-planet-ringed"></i> Planetary Data System
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Module: Space Apps Challenge -->
+    <section id="space-apps" class="module">
+      <div class="content-wrapper">
+        <div class="challenge-header">
+          <h2>🌍 NASA Space Apps Challenge</h2>
+          <p class="subtitle">The world's largest global hackathon</p>
+        </div>
+
+        <div class="challenge-info">
+          <div class="info-card">
+            <h3><i class="fas fa-info-circle"></i> What is Space Apps?</h3>
+            <p>NASA's International Space Apps Challenge is an annual hackathon that takes place over 48 hours in cities around the world. The event embraces collaborative problem solving with a goal of producing relevant open-source solutions to address global needs applicable to both life on Earth and life in space.</p>
+          </div>
+
+          <div class="info-card">
+            <h3><i class="fas fa-trophy"></i> Our Challenge</h3>
+            <h4>"Explore Massive Datasets Visually"</h4>
+            <p><strong>Objective:</strong> Create a platform that allows users to zoom in and out of NASA's massive image datasets, label known features, and discover new patterns.</p>
+            
+            <div class="challenge-requirements">
+              <h5>Key Requirements:</h5>
+              <ul>
+                <li>✅ Navigate through huge image datasets (Earth, Moon, Mars, Space)</li>
+                <li>✅ Zoom and pan capabilities for detailed examination</li>
+                <li>✅ Label and annotate features</li>
+                <li>✅ Compare images across time and spectrum</li>
+                <li>✅ User-friendly interface for public and researchers</li>
+                <li>✅ Support diverse data products (different wavelengths, times, sources)</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <h3><i class="fas fa-lightbulb"></i> Our Solution: STAR Explorer</h3>
+            <p>STAR Explorer (Space Telescope Analysis & Research) is our innovative solution that provides:</p>
+            <ul>
+              <li><strong>Deep Zoom Technology:</strong> Explore massive images at multiple scales</li>
+              <li><strong>Multi-Dataset Support:</strong> Earth observations, lunar maps, planetary imagery</li>
+              <li><strong>Comparison Tools:</strong> Side-by-side analysis of temporal and spectral data</li>
+              <li><strong>Feature Labeling:</strong> Collaborative annotation system</li>
+              <li><strong>Public Gallery:</strong> Museum-mode for educational outreach</li>
+              <li><strong>Researcher Tools:</strong> Advanced analysis capabilities</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3><i class="fas fa-database"></i> Datasets Used</h3>
+            <div class="dataset-list">
+              <div class="dataset-item">
+                <h5>🌍 Earth Observations</h5>
+                <p>Landsat, MODIS, Sentinel - Multi-temporal and multi-spectral imagery</p>
+                <a href="https://www.dgi.inpe.br/catalogo/" target="_blank">INPE Catalog</a>
+              </div>
+              <div class="dataset-item">
+                <h5>🔥 Fire Data</h5>
+                <p>Canadian Wildfire Information System - Fire detection and monitoring</p>
+                <a href="https://cwfis.cfs.nrcan.gc.ca/datamart" target="_blank">CWFIS Datamart</a>
+              </div>
+              <div class="dataset-item">
+                <h5>🌟 TESS Mission</h5>
+                <p>Transiting Exoplanet Survey Satellite - Space telescope imagery</p>
+                <a href="https://archive.stsci.edu/tess/bulk_downloads.html" target="_blank">TESS Archive</a>
+              </div>
+              <div class="dataset-item">
+                <h5>🌙 Lunar Reconnaissance</h5>
+                <p>LRO - High-resolution lunar surface maps</p>
+              </div>
+              <div class="dataset-item">
+                <h5>🔴 Mars Exploration</h5>
+                <p>MRO, Mars Express - Martian surface imagery</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="impact-section">
+          <h3>Impact & Applications</h3>
+          <div class="impact-grid">
+            <div class="impact-card">
+              <i class="fas fa-graduation-cap"></i>
+              <h4>Education</h4>
+              <p>Science museums and schools can use STAR Explorer for interactive learning</p>
+            </div>
+            <div class="impact-card">
+              <i class="fas fa-microscope"></i>
+              <h4>Research</h4>
+              <p>Scientists can conduct detailed studies and discover new patterns</p>
+            </div>
+            <div class="impact-card">
+              <i class="fas fa-users"></i>
+              <h4>Public Engagement</h4>
+              <p>Citizen scientists can contribute to feature labeling and discovery</p>
+            </div>
+            <div class="impact-card">
+              <i class="fas fa-chart-line"></i>
+              <h4>Climate Monitoring</h4>
+              <p>Track environmental changes over time using temporal comparisons</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Module: Image Explorer -->
+    <section id="image-explorer" class="module">
+      <div class="explorer-container">
+        <div class="explorer-controls">
+          <div class="control-group">
+            <label>Dataset:</label>
+            <select id="datasetSelect" onchange="loadDataset()">
+              <option value="earth">🌍 Earth - Landsat</option>
+              <option value="moon">🌙 Moon - LRO</option>
+              <option value="mars">🔴 Mars - MRO</option>
+              <option value="tess">🌟 TESS - Space</option>
+            </select>
+          </div>
+
+          <div class="control-group">
+            <label>Spectral Band:</label>
+            <select id="spectralBand">
+              <option value="visible">Visible Light</option>
+              <option value="infrared">Infrared</option>
+              <option value="thermal">Thermal</option>
+              <option value="composite">RGB Composite</option>
+            </select>
+          </div>
+
+          <div class="control-group">
+            <label>Search Feature:</label>
+            <input type="text" id="featureSearch" placeholder="e.g., Olympus Mons">
+            <button onclick="searchFeature()" class="search-btn">
+              <i class="fas fa-search"></i> Search
+            </button>
+          </div>
+
+          <div class="tool-buttons">
+            <button onclick="addLabel()" class="tool-btn" title="Add Label">
+              <i class="fas fa-tag"></i>
+            </button>
+            <button onclick="measureDistance()" class="tool-btn" title="Measure">
+              <i class="fas fa-ruler"></i>
+            </button>
+            <button onclick="toggleOverlay()" class="tool-btn" title="Toggle Overlay">
+              <i class="fas fa-layer-group"></i>
+            </button>
+            <button onclick="captureView()" class="tool-btn" title="Capture View">
+              <i class="fas fa-camera"></i>
+            </button>
+          </div>
+        </div>
+
+        <div id="viewer" class="image-viewer"></div>
+
+        <div class="info-panel">
+          <h4>Image Information</h4>
+          <div id="imageInfo">
+            <p><strong>Dataset:</strong> <span id="infoDataset">Earth - Landsat</span></p>
+            <p><strong>Resolution:</strong> <span id="infoResolution">30m/pixel</span></p>
+            <p><strong>Date:</strong> <span id="infoDate">2024-01-15</span></p>
+            <p><strong>Coordinates:</strong> <span id="infoCoords">0.0°, 0.0°</span></p>
+            <p><strong>Zoom Level:</strong> <span id="infoZoom">1x</span></p>
+          </div>
+
+          <h4>Labels <button onclick="showAllLabels()" class="mini-btn">View All</button></h4>
+          <div id="labelsList" class="labels-list">
+            <div class="label-item">
+              <span class="label-name">Amazon Rainforest</span>
+              <button onclick="goToLabel('Amazon Rainforest')" class="mini-btn">Go</button>
+            </div>
+            <div class="label-item">
+              <span class="label-name">Sahara Desert</span>
+              <button onclick="goToLabel('Sahara Desert')" class="mini-btn">Go</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Module: Comparison Tool -->
+    <section id="comparison-tool" class="module">
+      <div class="comparison-container">
+        <div class="comparison-controls">
+          <h3>Image Comparison Tool</h3>
+          <p>Compare images across time, spectrum, or different datasets</p>
+
+          <div class="comparison-settings">
+            <div class="setting-group">
+              <h4>Left Image</h4>
+              <select id="leftDataset">
+                <option>Earth - 2020</option>
+                <option>Earth - 2021</option>
+                <option>Earth - 2022</option>
+                <option>Earth - 2023</option>
+              </select>
+              <select id="leftBand">
+                <option>Visible</option>
+                <option>Infrared</option>
+                <option>Thermal</option>
+              </select>
+            </div>
+
+            <div class="setting-group">
+              <h4>Right Image</h4>
+              <select id="rightDataset">
+                <option>Earth - 2020</option>
+                <option>Earth - 2021</option>
+                <option>Earth - 2022</option>
+                <option selected>Earth - 2023</option>
+              </select>
+              <select id="rightBand">
+                <option>Visible</option>
+                <option>Infrared</option>
+                <option>Thermal</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="comparison-modes">
+            <button onclick="setComparisonMode('sidebyside')" class="mode-btn active">
+              <i class="fas fa-columns"></i> Side by Side
+            </button>
+            <button onclick="setComparisonMode('slider')" class="mode-btn">
+              <i class="fas fa-sliders-h"></i> Slider
+            </button>
+            <button onclick="setComparisonMode('overlay')" class="mode-btn">
+              <i class="fas fa-layer-group"></i> Overlay
+            </button>
+            <button onclick="setComparisonMode('difference')" class="mode-btn">
+              <i class="fas fa-adjust"></i> Difference
+            </button>
+          </div>
+
+          <button onclick="loadComparison()" class="load-btn">
+            <i class="fas fa-sync"></i> Load Comparison
+          </button>
+        </div>
+
+        <div id="comparisonView" class="comparison-view">
+          <div class="viewer-half">
+            <div class="viewer-label">2020 - Visible Light</div>
+            <div id="leftViewer" class="comparison-viewer"></div>
+          </div>
+          <div class="viewer-half">
+            <div class="viewer-label">2023 - Visible Light</div>
+            <div id="rightViewer" class="comparison-viewer"></div>
+          </div>
+        </div>
+
+        <div class="analysis-panel">
+          <h4>Change Detection Analysis</h4>
+          <div class="analysis-results">
+            <div class="analysis-stat">
+              <i class="fas fa-chart-area"></i>
+              <div>
+                <strong>Area Changed:</strong>
+                <span>12.4%</span>
+              </div>
+            </div>
+            <div class="analysis-stat">
+              <i class="fas fa-tree"></i>
+              <div>
+                <strong>Vegetation Loss:</strong>
+                <span>-8.2%</span>
+              </div>
+            </div>
+            <div class="analysis-stat">
+              <i class="fas fa-city"></i>
+              <div>
+                <strong>Urban Growth:</strong>
+                <span>+5.6%</span>
+              </div>
+            </div>
+          </div>
+          <button onclick="exportAnalysis()" class="export-btn">
+            <i class="fas fa-download"></i> Export Analysis
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Module: Public Gallery -->
+    <section id="gallery" class="module">
+      <div class="gallery-container">
+        <div class="gallery-header">
+          <h2>Public Gallery - Featured Discoveries</h2>
+          <p>Explore 36 stunning NASA images across 10 categories from our solar system and beyond</p>
+          
+          <div class="gallery-filters">
+            <button class="filter-btn active" onclick="filterGallery('all')">All</button>
+            <button class="filter-btn" onclick="filterGallery('earth')">🌍 Earth</button>
+            <button class="filter-btn" onclick="filterGallery('moon')">🌙 Moon</button>
+            <button class="filter-btn" onclick="filterGallery('mars')">🔴 Mars</button>
+            <button class="filter-btn" onclick="filterGallery('space')">✨ Deep Space</button>
+            <button class="filter-btn" onclick="filterGallery('saturn')">🪐 Saturn</button>
+            <button class="filter-btn" onclick="filterGallery('sun')">☀️ Sun</button>
+            <button class="filter-btn" onclick="filterGallery('venus')">💛 Venus</button>
+            <button class="filter-btn" onclick="filterGallery('neptune')">💙 Neptune</button>
+            <button class="filter-btn" onclick="filterGallery('comet')">☄️ Comets</button>
+            <button class="filter-btn" onclick="filterGallery('exoplanet')">🌟 Exoplanets</button>
+          </div>
+        </div>
+
+        <div class="gallery-grid">
+          <div class="gallery-item" data-category="earth">
+            <img src="https://images-assets.nasa.gov/image/iss068e016472/iss068e016472~large.jpg" alt="Amazon Rainforest" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>🌳 Amazon Rainforest</h4>
+              <p>Deforestation patterns over 5 years</p>
+              <span class="category-badge">Earth</span>
+              <button onclick="viewGalleryItem(1)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="moon">
+            <img src="https://images-assets.nasa.gov/image/PIA00302/PIA00302~large.jpg" alt="Tycho Crater" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>🌙 Tycho Crater</h4>
+              <p>High-resolution lunar surface features</p>
+              <span class="category-badge">Moon</span>
+              <button onclick="viewGalleryItem(2)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="mars">
+            <img src="https://images-assets.nasa.gov/image/PIA02820/PIA02820~large.jpg" alt="Olympus Mons" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>🔴 Olympus Mons</h4>
+              <p>Largest volcano in the solar system</p>
+              <span class="category-badge">Mars</span>
+              <button onclick="viewGalleryItem(3)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="earth">
+            <img src="https://images-assets.nasa.gov/image/iss068e030835/iss068e030835~large.jpg" alt="Himalayas" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>🏔️ Himalayan Glaciers</h4>
+              <p>Glacier retreat monitoring</p>
+              <span class="category-badge">Earth</span>
+              <button onclick="viewGalleryItem(4)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="space">
+            <img src="https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001327/GSFC_20171208_Archive_e001327~large.jpg" alt="Pillars of Creation" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>✨ Pillars of Creation</h4>
+              <p>James Webb Space Telescope</p>
+              <span class="category-badge">Space</span>
+              <button onclick="viewGalleryItem(5)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="earth">
+            <img src="https://images-assets.nasa.gov/image/iss068e042594/iss068e042594~large.jpg" alt="Sahara Desert" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>🏜️ Sahara Desert Patterns</h4>
+              <p>Sand dune formations</p>
+              <span class="category-badge">Earth</span>
+              <button onclick="viewGalleryItem(6)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="space">
+            <img src="https://images-assets.nasa.gov/image/PIA23122/PIA23122~large.jpg" alt="Jupiter" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>🪐 Jupiter's Great Red Spot</h4>
+              <p>Juno spacecraft close-up</p>
+              <span class="category-badge">Space</span>
+              <button onclick="viewGalleryItem(7)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="mars">
+            <img src="https://images-assets.nasa.gov/image/PIA24542/PIA24542~large.jpg" alt="Mars Perseverance" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>🚁 Mars Helicopter View</h4>
+              <p>Ingenuity's aerial perspective</p>
+              <span class="category-badge">Mars</span>
+              <button onclick="viewGalleryItem(8)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="earth">
+            <img src="https://images-assets.nasa.gov/image/iss067e316517/iss067e316517~large.jpg" alt="Hurricane" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>🌀 Hurricane from Space</h4>
+              <p>Storm system tracking</p>
+              <span class="category-badge">Earth</span>
+              <button onclick="viewGalleryItem(9)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="space">
+            <img src="https://images-assets.nasa.gov/image/PIA23645/PIA23645~large.jpg" alt="Nebula" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>🌌 Carina Nebula</h4>
+              <p>Star-forming region</p>
+              <span class="category-badge">Space</span>
+              <button onclick="viewGalleryItem(10)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="moon">
+            <img src="https://images-assets.nasa.gov/image/PIA13517/PIA13517~large.jpg" alt="Moon Surface" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>🌑 Lunar South Pole</h4>
+              <p>Permanently shadowed regions</p>
+              <span class="category-badge">Moon</span>
+              <button onclick="viewGalleryItem(11)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="earth">
+            <img src="https://images-assets.nasa.gov/image/iss068e018789/iss068e018789~large.jpg" alt="Northern Lights" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>🌈 Aurora Borealis</h4>
+              <p>Northern lights from ISS</p>
+              <span class="category-badge">Earth</span>
+              <button onclick="viewGalleryItem(12)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="saturn">
+            <img src="https://images-assets.nasa.gov/image/PIA17172/PIA17172~large.jpg" alt="Saturn Rings" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>🪐 Saturn's Majestic Rings</h4>
+              <p>Cassini spacecraft detailed view</p>
+              <span class="category-badge">Saturn</span>
+              <button onclick="viewGalleryItem(13)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="sun">
+            <img src="https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e000393/GSFC_20171208_Archive_e000393~large.jpg" alt="Solar Flare" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>☀️ Massive Solar Flare</h4>
+              <p>Solar Dynamics Observatory capture</p>
+              <span class="category-badge">Sun</span>
+              <button onclick="viewGalleryItem(14)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="space">
+            <img src="https://images-assets.nasa.gov/image/PIA15985/PIA15985~large.jpg" alt="Andromeda Galaxy" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>🌌 Andromeda Galaxy</h4>
+              <p>Our nearest galactic neighbor</p>
+              <span class="category-badge">Deep Space</span>
+              <button onclick="viewGalleryItem(15)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="earth">
+            <img src="https://images-assets.nasa.gov/image/iss070e050412/iss070e050412~large.jpg" alt="Great Barrier Reef" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>🐠 Great Barrier Reef</h4>
+              <p>Coral reef ecosystem from orbit</p>
+              <span class="category-badge">Earth</span>
+              <button onclick="viewGalleryItem(16)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="mars">
+            <img src="https://images-assets.nasa.gov/image/PIA23499/PIA23499~large.jpg" alt="Mars Valles Marineris" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>🔴 Valles Marineris Canyon</h4>
+              <p>Largest canyon in solar system</p>
+              <span class="category-badge">Mars</span>
+              <button onclick="viewGalleryItem(17)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="space">
+            <img src="https://images-assets.nasa.gov/image/PIA23128/PIA23128~large.jpg" alt="Orion Nebula" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>✨ Orion Nebula</h4>
+              <p>Stellar nursery in infrared</p>
+              <span class="category-badge">Deep Space</span>
+              <button onclick="viewGalleryItem(18)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="saturn">
+            <img src="https://images-assets.nasa.gov/image/PIA21046/PIA21046~large.jpg" alt="Saturn Hexagon" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>🪐 Saturn's Hexagon Storm</h4>
+              <p>Mysterious north pole pattern</p>
+              <span class="category-badge">Saturn</span>
+              <button onclick="viewGalleryItem(19)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="moon">
+            <img src="https://images-assets.nasa.gov/image/as11-40-5903/as11-40-5903~large.jpg" alt="Apollo 11 Footprint" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>🌙 Apollo 11 Landing Site</h4>
+              <p>Historic first moon landing</p>
+              <span class="category-badge">Moon</span>
+              <button onclick="viewGalleryItem(20)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="sun">
+            <img src="https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001481/GSFC_20171208_Archive_e001481~large.jpg" alt="Solar Prominence" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>☀️ Solar Prominence</h4>
+              <p>Plasma eruption from sun's surface</p>
+              <span class="category-badge">Sun</span>
+              <button onclick="viewGalleryItem(21)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="earth">
+            <img src="https://images-assets.nasa.gov/image/iss069e042012/iss069e042012~large.jpg" alt="Nile River Delta" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>🏞️ Nile River Delta</h4>
+              <p>Ancient civilization cradle</p>
+              <span class="category-badge">Earth</span>
+              <button onclick="viewGalleryItem(22)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="space">
+            <img src="https://images-assets.nasa.gov/image/PIA23122/PIA23122~large.jpg" alt="Jupiter Clouds" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>🌪️ Jupiter's Cloud Bands</h4>
+              <p>Turbulent atmospheric patterns</p>
+              <span class="category-badge">Deep Space</span>
+              <button onclick="viewGalleryItem(23)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="mars">
+            <img src="https://images-assets.nasa.gov/image/PIA25969/PIA25969~large.jpg" alt="Mars Jezero Crater" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>🔴 Jezero Crater Delta</h4>
+              <p>Ancient river delta on Mars</p>
+              <span class="category-badge">Mars</span>
+              <button onclick="viewGalleryItem(24)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="venus">
+            <img src="https://images-assets.nasa.gov/image/PIA00271/PIA00271~large.jpg" alt="Venus Surface" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>💛 Venus Surface Radar</h4>
+              <p>Magellan spacecraft radar mapping</p>
+              <span class="category-badge">Venus</span>
+              <button onclick="viewGalleryItem(25)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="neptune">
+            <img src="https://images-assets.nasa.gov/image/PIA01492/PIA01492~large.jpg" alt="Neptune" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>💙 Neptune's Great Dark Spot</h4>
+              <p>Voyager 2 historic flyby</p>
+              <span class="category-badge">Neptune</span>
+              <button onclick="viewGalleryItem(26)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="comet">
+            <img src="https://images-assets.nasa.gov/image/PIA02142/PIA02142~large.jpg" alt="Comet Hale-Bopp" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>☄️ Comet Hale-Bopp</h4>
+              <p>Spectacular dual-tail comet</p>
+              <span class="category-badge">Comet</span>
+              <button onclick="viewGalleryItem(27)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="saturn">
+            <img src="https://images-assets.nasa.gov/image/PIA08329/PIA08329~large.jpg" alt="Saturn Moons" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>🪐 Saturn with Titan & Dione</h4>
+              <p>Multiple moons in one frame</p>
+              <span class="category-badge">Saturn</span>
+              <button onclick="viewGalleryItem(28)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="exoplanet">
+            <img src="https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001327/GSFC_20171208_Archive_e001327~large.jpg" alt="Exoplanet System" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>🌟 TRAPPIST-1 System</h4>
+              <p>Seven Earth-sized exoplanets</p>
+              <span class="category-badge">Exoplanet</span>
+              <button onclick="viewGalleryItem(29)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="earth">
+            <img src="https://images-assets.nasa.gov/image/iss071e564940/iss071e564940~large.jpg" alt="Mount Everest" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>🏔️ Mount Everest Peak</h4>
+              <p>World's highest mountain from ISS</p>
+              <span class="category-badge">Earth</span>
+              <button onclick="viewGalleryItem(30)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="venus">
+            <img src="https://images-assets.nasa.gov/image/PIA00106/PIA00106~large.jpg" alt="Venus Atmosphere" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>💛 Venus Cloud Patterns</h4>
+              <p>Thick sulfuric acid atmosphere</p>
+              <span class="category-badge">Venus</span>
+              <button onclick="viewGalleryItem(31)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="space">
+            <img src="https://images-assets.nasa.gov/image/PIA23645/PIA23645~large.jpg" alt="Cosmic Cliffs" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>✨ Cosmic Cliffs</h4>
+              <p>James Webb's stunning nebula view</p>
+              <span class="category-badge">Deep Space</span>
+              <button onclick="viewGalleryItem(32)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="comet">
+            <img src="https://images-assets.nasa.gov/image/PIA19710/PIA19710~large.jpg" alt="Comet 67P" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>☄️ Comet 67P/Churyumov</h4>
+              <p>Rosetta mission close-up</p>
+              <span class="category-badge">Comet</span>
+              <button onclick="viewGalleryItem(33)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="neptune">
+            <img src="https://images-assets.nasa.gov/image/PIA02224/PIA02224~large.jpg" alt="Neptune Triton" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>💙 Neptune's Moon Triton</h4>
+              <p>Icy moon with nitrogen geysers</p>
+              <span class="category-badge">Neptune</span>
+              <button onclick="viewGalleryItem(34)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="exoplanet">
+            <img src="https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001481/GSFC_20171208_Archive_e001481~large.jpg" alt="Kepler Exoplanets" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>🌟 Kepler's Discoveries</h4>
+              <p>Thousands of distant worlds</p>
+              <span class="category-badge">Exoplanet</span>
+              <button onclick="viewGalleryItem(35)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="mars">
+            <img src="https://images-assets.nasa.gov/image/PIA24924/PIA24924~large.jpg" alt="Mars Polar Ice" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>🔴 Mars North Polar Ice Cap</h4>
+              <p>Frozen water and CO2 layers</p>
+              <span class="category-badge">Mars</span>
+              <button onclick="viewGalleryItem(36)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="earth">
+            <img src="https://images-assets.nasa.gov/image/iss070e001313/iss070e001313~large.jpg" alt="Tokyo at Night" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>🌃 Tokyo Megacity Lights</h4>
+              <p>Urban sprawl from space at night</p>
+              <span class="category-badge">Earth</span>
+              <button onclick="viewGalleryItem(37)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="moon">
+            <img src="https://images-assets.nasa.gov/image/PIA00405/PIA00405~large.jpg" alt="Lunar Farside" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>🌑 Moon's Far Side</h4>
+              <p>The hidden hemisphere never seen from Earth</p>
+              <span class="category-badge">Moon</span>
+              <button onclick="viewGalleryItem(38)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="space">
+            <img src="https://images-assets.nasa.gov/image/PIA15254/PIA15254~large.jpg" alt="Whirlpool Galaxy" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>🌀 Whirlpool Galaxy M51</h4>
+              <p>Spiral galaxy with companion</p>
+              <span class="category-badge">Deep Space</span>
+              <button onclick="viewGalleryItem(39)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="mars">
+            <img src="https://images-assets.nasa.gov/image/PIA23499/PIA23499~large.jpg" alt="Mars Canyon" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>🏜️ Valles Marineris Detail</h4>
+              <p>Layered rock formations in canyon walls</p>
+              <span class="category-badge">Mars</span>
+              <button onclick="viewGalleryItem(40)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="saturn">
+            <img src="https://images-assets.nasa.gov/image/PIA06077/PIA06077~large.jpg" alt="Saturn Eclipse" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>🪐 Saturn Backlit by Sun</h4>
+              <p>Cassini's spectacular eclipse view</p>
+              <span class="category-badge">Saturn</span>
+              <button onclick="viewGalleryItem(41)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="earth">
+            <img src="https://images-assets.nasa.gov/image/iss068e059971/iss068e059971~large.jpg" alt="Iceland Volcanoes" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>🌋 Iceland's Volcanic Landscape</h4>
+              <p>Glaciers meeting volcanic terrain</p>
+              <span class="category-badge">Earth</span>
+              <button onclick="viewGalleryItem(42)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="space">
+            <img src="https://images-assets.nasa.gov/image/PIA23128/PIA23128~large.jpg" alt="Orion Nebula IR" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>✨ Orion Nebula Infrared</h4>
+              <p>Star formation revealed in infrared</p>
+              <span class="category-badge">Deep Space</span>
+              <button onclick="viewGalleryItem(43)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="sun">
+            <img src="https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e000678/GSFC_20171208_Archive_e000678~large.jpg" alt="Solar Corona" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>☀️ Solar Corona During Eclipse</h4>
+              <p>Sun's outer atmosphere revealed</p>
+              <span class="category-badge">Sun</span>
+              <button onclick="viewGalleryItem(44)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="moon">
+            <img src="https://images-assets.nasa.gov/image/as17-134-20384/as17-134-20384~large.jpg" alt="Apollo 17 Astronaut" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>👨‍🚀 Apollo 17 Moonwalk</h4>
+              <p>Last humans on the Moon (1972)</p>
+              <span class="category-badge">Moon</span>
+              <button onclick="viewGalleryItem(45)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="earth">
+            <img src="https://images-assets.nasa.gov/image/iss069e000587/iss069e000587~large.jpg" alt="Bahamas Waters" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>🏝️ Bahamas Turquoise Waters</h4>
+              <p>Crystal clear shallow ocean banks</p>
+              <span class="category-badge">Earth</span>
+              <button onclick="viewGalleryItem(46)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="space">
+            <img src="https://images-assets.nasa.gov/image/PIA16695/PIA16695~large.jpg" alt="Horsehead Nebula" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>🐴 Horsehead Nebula</h4>
+              <p>Iconic dark nebula in Orion</p>
+              <span class="category-badge">Deep Space</span>
+              <button onclick="viewGalleryItem(47)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="mars">
+            <img src="https://images-assets.nasa.gov/image/PIA23623/PIA23623~large.jpg" alt="Mars Dunes" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>🏜️ Martian Sand Dunes</h4>
+              <p>Dark dunes in Proctor Crater</p>
+              <span class="category-badge">Mars</span>
+              <button onclick="viewGalleryItem(48)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="saturn">
+            <img src="https://images-assets.nasa.gov/image/PIA17218/PIA17218~large.jpg" alt="Enceladus Geysers" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>💎 Enceladus Ice Geysers</h4>
+              <p>Water plumes from Saturn's moon</p>
+              <span class="category-badge">Saturn</span>
+              <button onclick="viewGalleryItem(49)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="earth">
+            <img src="https://images-assets.nasa.gov/image/iss070e086420/iss070e086420~large.jpg" alt="Grand Canyon" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>🏞️ Grand Canyon from Space</h4>
+              <p>Geological layers spanning millions of years</p>
+              <span class="category-badge">Earth</span>
+              <button onclick="viewGalleryItem(50)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="space">
+            <img src="https://images-assets.nasa.gov/image/PIA23645/PIA23645~large.jpg" alt="Southern Ring Nebula" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>💍 Southern Ring Nebula</h4>
+              <p>Dying star's expanding gas shell</p>
+              <span class="category-badge">Deep Space</span>
+              <button onclick="viewGalleryItem(51)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="venus">
+            <img src="https://images-assets.nasa.gov/image/PIA00148/PIA00148~large.jpg" alt="Venus Volcanoes" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>🌋 Venus Volcanic Domes</h4>
+              <p>Pancake-shaped volcanic features</p>
+              <span class="category-badge">Venus</span>
+              <button onclick="viewGalleryItem(52)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="moon">
+            <img src="https://images-assets.nasa.gov/image/PIA00094/PIA00094~large.jpg" alt="Lunar Highlands" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>🌙 Lunar Highlands Terrain</h4>
+              <p>Ancient cratered surface</p>
+              <span class="category-badge">Moon</span>
+              <button onclick="viewGalleryItem(53)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="earth">
+            <img src="https://images-assets.nasa.gov/image/iss071e317890/iss071e317890~large.jpg" alt="Dubai Palm Islands" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>🏝️ Dubai Palm Islands</h4>
+              <p>Artificial islands visible from space</p>
+              <span class="category-badge">Earth</span>
+              <button onclick="viewGalleryItem(54)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="space">
+            <img src="https://images-assets.nasa.gov/image/PIA15985/PIA15985~large.jpg" alt="Andromeda Detail" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>🌌 Andromeda Galaxy Core</h4>
+              <p>Central region with billions of stars</p>
+              <span class="category-badge">Deep Space</span>
+              <button onclick="viewGalleryItem(55)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="mars">
+            <img src="https://images-assets.nasa.gov/image/PIA23304/PIA23304~large.jpg" alt="Mars Gullies" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>🏔️ Martian Gullies</h4>
+              <p>Evidence of recent water flow</p>
+              <span class="category-badge">Mars</span>
+              <button onclick="viewGalleryItem(56)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="sun">
+            <img src="https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001992/GSFC_20171208_Archive_e001992~large.jpg" alt="Solar Filament" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>☀️ Giant Solar Filament</h4>
+              <p>Suspended plasma in magnetic field</p>
+              <span class="category-badge">Sun</span>
+              <button onclick="viewGalleryItem(57)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="earth">
+            <img src="https://images-assets.nasa.gov/image/iss068e042594/iss068e042594~large.jpg" alt="Sahara Patterns" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>🏜️ Sahara Desert Patterns</h4>
+              <p>Wind-sculpted sand formations</p>
+              <span class="category-badge">Earth</span>
+              <button onclick="viewGalleryItem(58)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="space">
+            <img src="https://images-assets.nasa.gov/image/PIA23122/PIA23122~large.jpg" alt="Jupiter Storm" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>🌪️ Jupiter's Turbulent Storms</h4>
+              <p>Chaotic atmospheric dynamics</p>
+              <span class="category-badge">Deep Space</span>
+              <button onclick="viewGalleryItem(59)" class="view-btn">View Details</button>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="comet">
+            <img src="https://images-assets.nasa.gov/image/PIA00342/PIA00342~large.jpg" alt="Comet Nucleus" loading="lazy">
+            <div class="gallery-overlay">
+              <h4>☄️ Comet Nucleus Close-Up</h4>
+              <p>Icy body with active jets</p>
+              <span class="category-badge">Comet</span>
+              <button onclick="viewGalleryItem(60)" class="view-btn">View Details</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="museum-mode">
+          <h3>🏛️ Museum Mode</h3>
+          <p>Perfect for public displays and educational settings</p>
+          <button onclick="startMuseumMode()" class="museum-btn">
+            <i class="fas fa-play"></i> Start Slideshow
+          </button>
+          <div class="museum-settings">
+            <label>
+              <input type="checkbox" checked> Auto-advance
+            </label>
+            <label>
+              <input type="checkbox" checked> Show descriptions
+            </label>
+            <label>
+              <input type="checkbox"> Interactive mode
+            </label>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Image Modal for Full View -->
+  <div id="imageModal" class="image-modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeImageModal()">&times;</button>
+      <button class="modal-nav modal-prev" onclick="navigateImage(-1)">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="modal-nav modal-next" onclick="navigateImage(1)">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+      
+      <div class="modal-image-container">
+        <img id="modalImage" src="" alt="">
+        <div class="modal-loader">
+          <i class="fas fa-spinner fa-spin"></i>
+          <p>Loading image...</p>
+        </div>
+        
+        <!-- Balance/Symmetry Controls -->
+        <div class="balance-controls">
+          <button class="balance-btn" onclick="toggleFlipHorizontal()" title="Flip Horizontal">
+            <i class="fas fa-arrows-alt-h"></i>
+          </button>
+          <button class="balance-btn" onclick="toggleFlipVertical()" title="Flip Vertical">
+            <i class="fas fa-arrows-alt-v"></i>
+          </button>
+          <button class="balance-btn" onclick="toggleSymmetry()" title="Symmetry View">
+            <i class="fas fa-clone"></i>
+          </button>
+          <button class="balance-btn" onclick="resetImageTransform()" title="Reset View">
+            <i class="fas fa-undo"></i>
+          </button>
+          <button class="balance-btn compare-btn" onclick="toggleCompareMode()" title="Compare Images">
+            <i class="fas fa-columns"></i>
+          </button>
+        </div>
+        
+        <!-- Modal Comparison Mode Container -->
+        <div id="modalComparisonContainer" class="modal-comparison-container" style="display: none;">
+          <img id="modalCompareImage" src="" alt="Comparison Image">
+          <div class="modal-comparison-slider" id="modalComparisonSlider"></div>
+        </div>
+        
+        <!-- Modal Comparison Controls -->
+        <div id="modalComparisonControls" class="modal-comparison-controls" style="display: none;">
+          <div class="modal-comparison-selector">
+            <label for="modalCompareImageSelect">
+              <i class="fas fa-images"></i> Compare with:
+            </label>
+            <select id="modalCompareImageSelect" onchange="updateComparisonImage()">
+              <option value="">Select an image...</option>
+            </select>
+          </div>
+          <button class="modal-exit-compare-btn" onclick="exitCompareMode()" title="Exit Comparison">
+            <i class="fas fa-times"></i> Exit Compare
+          </button>
+        </div>
+      </div>
+      
+      <div class="modal-info">
+        <div class="modal-header">
+          <h3 id="modalTitle"></h3>
+          <span id="modalCategory" class="category-badge"></span>
+        </div>
+        <p id="modalDescription"></p>
+        <div class="modal-meta">
+          <span id="modalCounter"></span>
+          <a id="modalDownload" href="" download class="download-btn">
+            <i class="fas fa-download"></i> Download Full Resolution
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/openseadragon.min.js"></script>
+  <script src="dashboard.js"></script>
+</body>
+</html>
